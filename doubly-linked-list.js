@@ -329,4 +329,4 @@ krish.printList();               // Prints linked list one by one
 
 console.log(krish);              // Prints the linkedlist class
 
-//JSBin : https://jsbin.com/gakuduw/edit?js,output
+//JSBin : https://jsbin.com/gakuduw/edit?js,console

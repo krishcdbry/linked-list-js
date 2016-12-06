@@ -297,4 +297,4 @@ krish.printList();               // Prints all values one by one
 
 console.log(krish);              // Prints the linkedlist class
 
-// JsBin : https://jsbin.com/jebibe/1/edit?js,output
+// JsBin : https://jsbin.com/jebibe/edit?js,console
