@@ -43,11 +43,11 @@ Linked list implementation in JavaScript - Single linked list, Doubly linked lis
 
 
 ## Demo
-Demo @[singly-linked-list](https://jsbin.com/jebibe/1/edit?js,output)
-| https://jsbin.com/jebibe/edit?js,output
+Demo @[singly-linked-list](https://jsbin.com/jebibe/edit?js,console)
+| https://jsbin.com/jebibe/edit?js,console
 
-Demo @[doubly-linked-list](https://jsbin.com/gakuduw/edit?js,output)
-| https://jsbin.com/gakuduw/edit?js,output
+Demo @[doubly-linked-list](https://jsbin.com/gakuduw/edit?js,console)
+| https://jsbin.com/gakuduw/edit?js,console
 
 ## Author
 Krishcdbry [krishcdbry@gmail.com]
