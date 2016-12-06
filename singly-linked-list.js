@@ -3,24 +3,24 @@
  @param {number/string/null} data
  @param {Node/null} link
  */
-function Node (data, link) {
+function Node(data, link) {
 	this.data = (data) ? data : null;
 	this.link = (link) ? link : null;
 }
 
-Node.prototype.setData = function (data) {
+Node.prototype.setData = function(data) {
 	this.data = data;
 };
 
-Node.prototype.setLink = function (link) {
+Node.prototype.setLink = function(link) {
 	this.link = link;
 };
 
-Node.prototype.getData = function (data) {
+Node.prototype.getData = function(data) {
 	return this.data;
 };
 
-Node.prototype.getLink = function () {
+Node.prototype.getLink = function() {
 	return this.link;
 };
 
@@ -38,7 +38,7 @@ function Linkedlist() {
  Getting size
  @return number
  */
-Linkedlist.prototype.getSize = function () {
+Linkedlist.prototype.getSize = function() {
 	return this.size;
 };
 
@@ -46,7 +46,7 @@ Linkedlist.prototype.getSize = function () {
  Checking weather linkedlist is empty or not
  @return boolean
  */
-Linkedlist.prototype.isEmpty = function () {
+Linkedlist.prototype.isEmpty = function() {
 	return this.size === 0;
 };
 
@@ -55,7 +55,7 @@ Linkedlist.prototype.isEmpty = function () {
  @param {number/string/null} data
  Complexity : O(1)
  */
-Linkedlist.prototype.insertNodeAtBeginning = function (data) {
+Linkedlist.prototype.insertNodeAtBeginning = function(data) {
 	var newNode = new Node(data);
 	this.size++;
 
@@ -75,7 +75,7 @@ Linkedlist.prototype.insertNodeAtBeginning = function (data) {
  @param {number/string/null} data
  Complexity : O(1)
  */
-Linkedlist.prototype.insertNodeAtEnd = function (data) {
+Linkedlist.prototype.insertNodeAtEnd = function(data) {
 	var newNode = new Node(data);
 	this.size++;
 
@@ -96,11 +96,11 @@ Linkedlist.prototype.insertNodeAtEnd = function (data) {
  @param {number} pos
  Complexity : O(n)
  */
-Linkedlist.prototype.insertNodeAtPos = function (data, pos) {
+Linkedlist.prototype.insertNodeAtPos = function(data, pos) {
 	var newNode = new Node(data);
 	this.size++;
 	var ptr = this.start;
-	pos = pos-1;
+	pos = pos - 1;
 	for (var i = 0; i < this.size; i++) {   // Looping through the linked list
 		if (i == pos) {                      // Found the before pos node
 			newNode.setLink(ptr.getLink());
@@ -115,7 +115,7 @@ Linkedlist.prototype.insertNodeAtPos = function (data, pos) {
  Deleting node at the beginning
  Complexity : O(1)
  */
-Linkedlist.prototype.deleteNodeAtBeginning = function () {
+Linkedlist.prototype.deleteNodeAtBeginning = function() {
 	if (this.size <= 0) {
 		return;
 	}
@@ -136,7 +136,7 @@ Linkedlist.prototype.deleteNodeAtBeginning = function () {
  Deleting node at the end
  Complexity : O(n)
  */
-Linkedlist.prototype.deleteNodeAtEnd = function () {
+Linkedlist.prototype.deleteNodeAtEnd = function() {
 	if (this.size <= 0) {
 		return;
 	}
@@ -150,7 +150,7 @@ Linkedlist.prototype.deleteNodeAtEnd = function () {
 	else {
 		var ptr = this.start;
 		var tmpNode = null;
-		for (var i = 0; i < this.size-1; i++) {  // Looping through the linked list
+		for (var i = 0; i < this.size - 1; i++) {  // Looping through the linked list
 			tmpNode = ptr;
 			ptr = ptr.getLink();
 		}
@@ -164,7 +164,7 @@ Linkedlist.prototype.deleteNodeAtEnd = function () {
  @param {number} pos
  Complexity : O(n)
  */
-Linkedlist.prototype.deleteNodeAtPos = function (pos) {
+Linkedlist.prototype.deleteNodeAtPos = function(pos) {
 	if (pos >= this.size) {
 		return;
 	}
@@ -175,7 +175,7 @@ Linkedlist.prototype.deleteNodeAtPos = function (pos) {
 	}
 	else {
 		var ptr = this.start;
-		pos = pos-1;
+		pos = pos - 1;
 		for (var i = 0; i < this.size; i++) {       // Looping through the linked list until position found
 			if (i === pos) {
 				var tmpNode = ptr.getLink().getLink();
@@ -188,13 +188,12 @@ Linkedlist.prototype.deleteNodeAtPos = function (pos) {
 	}
 };
 
-
 /**
  Getting item of linked list at a particular position
  @param {number} pos
  Complexity : O(n)
  */
-DoublyLinkedlist.prototype.getItem = function (pos) {
+DoublyLinkedlist.prototype.getItem = function(pos) {
 	if (pos >= this.size) {
 		return;
 	}
@@ -218,7 +217,7 @@ DoublyLinkedlist.prototype.getItem = function (pos) {
  @param {number} item
  Complexity : O(n)
  */
-DoublyLinkedlist.prototype.getIndex = function (item) {
+DoublyLinkedlist.prototype.getIndex = function(item) {
 	if (item === this.start.getData()) {             				 // First position
 		return 0;
 	}
@@ -237,12 +236,12 @@ DoublyLinkedlist.prototype.getIndex = function (item) {
 /**
  Making linked list circular (Temporary)
  */
-Linkedlist.prototype.makeCircular = function () {
+Linkedlist.prototype.makeCircular = function() {
 	var ptr = this.start;
 	var head = this.start;
 	var i = 0;
 	while (i < this.size) {
-		if (i == this.size-1) {
+		if (i == this.size - 1) {
 			ptr.setLink(head);
 		}
 		ptr = ptr.getLink();
@@ -255,9 +254,9 @@ Linkedlist.prototype.makeCircular = function () {
  Printing data as per the request
  @param {number} isNode [1/none]
  */
-Linkedlist.prototype.printData = function (isNode) {
+Linkedlist.prototype.printData = function(isNode) {
 	var ptr = this.start;
-	while(this.size > 0) {
+	while (this.size > 0) {
 		console.log((isNode) ? ptr : ptr.getData());
 		ptr = ptr.getLink();
 		if (ptr === null) {
