@@ -188,6 +188,52 @@ Linkedlist.prototype.deleteNodeAtPos = function (pos) {
 	}
 };
 
+
+/**
+ Getting item of linked list at a particular position
+ @param {number} pos
+ Complexity : O(n)
+ */
+DoublyLinkedlist.prototype.getItem = function (pos) {
+	if (pos >= this.size) {
+		return;
+	}
+
+	if (pos === 0) {             				 // First position
+		return this.start.getData();
+	}
+	else {
+		var ptr = this.start;
+		for (var i = 0; i < this.size; i++) {      // Looping through the linked list until position found
+			if (i === pos) {
+				return ptr.getData();
+			}
+			ptr = ptr.getLink();
+		}
+	}
+};
+
+/**
+ Getting index of linked list item
+ @param {number} item
+ Complexity : O(n)
+ */
+DoublyLinkedlist.prototype.getIndex = function (item) {
+	if (item === this.start.getData()) {             				 // First position
+		return 0;
+	}
+	else {
+		var ptr = this.start;
+		for (var i = 0; i < this.size; i++) {      // Looping through the linked list until item found
+			if (ptr.getData() === item) {
+				return i;
+			}
+			ptr = ptr.getNextlink();
+		}
+	}
+	return 'Item not found';
+};
+
 /**
  Making linked list circular (Temporary)
  */
@@ -242,9 +288,13 @@ krish.deleteNodeAtEnd();    // Delete a node at beginning
 
 krish.makeCircular();            // Making linkedlist to circular
 
-krish.printData(1);               // Prints all nodes one by one
+krish.getSize();				 // Printing size of linked list
 
-krish.printData();               // Prints all values one by one
+krish.getItem(3);				 //
+
+krish.printNodes();              // Prints all nodes one by one
+
+krish.printList();               // Prints all values one by one
 
 console.log(krish);              // Prints the linkedlist class
 

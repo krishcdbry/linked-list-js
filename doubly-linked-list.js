@@ -65,7 +65,7 @@ DoublyLinkedlist.prototype.isEmpty = function () {
  @param {number/string/null} data
  Complexity : O(1)
  */
-DoublyLinkedlist.prototype.insertNodeAtBegining = function (data) {
+DoublyLinkedlist.prototype.insertNodeAtBeginning = function (data) {
 	var newNode = new Node(data);
 	this.size++;
 
@@ -128,7 +128,7 @@ DoublyLinkedlist.prototype.insertNodeAtPos = function (data, pos) {
  Deleting node at the beginning
  Complexity : O(1)
  */
-DoublyLinkedlist.prototype.deleteNodeAtBegining = function () {
+DoublyLinkedlist.prototype.deleteNodeAtBeginning = function () {
 	if (this.size <= 0) {
 		return;
 	}
@@ -204,6 +204,51 @@ DoublyLinkedlist.prototype.deleteNodeAtPos = function (pos) {
 };
 
 /**
+ Getting item of linked list at a particular position
+ @param {number} pos
+ Complexity : O(n)
+ */
+DoublyLinkedlist.prototype.getItem = function (pos) {
+	if (pos >= this.size) {
+		return;
+	}
+
+	if (pos === 0) {             				 // First position
+		return this.start.getData();
+	}
+	else {
+		var ptr = this.start;
+		for (var i = 0; i < this.size; i++) {      // Looping through the linked list until position found
+			if (i === pos) {
+				return ptr.getData();
+			}
+			ptr = ptr.getNextlink();
+		}
+	}
+};
+
+/**
+ Getting index of linked list item
+ @param {number} item
+ Complexity : O(n)
+ */
+DoublyLinkedlist.prototype.getIndex = function (item) {
+	if (item === this.start.getData()) {             				 // First position
+		return 0;
+	}
+	else {
+		var ptr = this.start;
+		for (var i = 0; i < this.size; i++) {      // Looping through the linked list until item found
+			if (ptr.getData() === item) {
+				return i;
+			}
+			ptr = ptr.getNextlink();
+		}
+	}
+	return 'Item not found';
+};
+
+/**
  Making linked list circular (Temporary)
  */
 DoublyLinkedlist.prototype.makeCircular = function () {
@@ -220,27 +265,48 @@ DoublyLinkedlist.prototype.makeCircular = function () {
 };
 
 /**
- Printing data as per the request
- @param {number} isNode [1/none]
+ Printing nodes
  */
-DoublyLinkedlist.prototype.printData = function (isNode) {
+DoublyLinkedlist.prototype.printNodes = function () {
 	var ptr = this.start;
-	while(this.size > 0) {
-		console.log((isNode) ? ptr : ptr.getData());
+	var i = this.size;
+	while(i > 0) {
+		console.log(ptr);
 		ptr = ptr.getNextlink();
 		if (ptr === null) {
 			break;
 		}
-		this.size--;
+		i--
 	}
+};
+
+/**
+ Printing list as a string
+ */
+DoublyLinkedlist.prototype.printList = function () {
+	var res = '';
+	var ptr = this.start;
+	var i = this.size;
+	while(i > 0) {
+		res = res + ptr.getData();
+		if (i > 1) {
+			res = res + ",";
+		}
+		ptr = ptr.getNextlink();
+		if (ptr === null) {
+			break;
+		}
+		i--;
+	}
+	console.log(res);
 };
 
 var krish = new DoublyLinkedlist();
 
-krish.insertNodeAtBegining(9);
-krish.insertNodeAtBegining(5);
-krish.insertNodeAtBegining(6);
-krish.insertNodeAtBegining(7);
+krish.insertNodeAtBeginning(9);
+krish.insertNodeAtBeginning(5);
+krish.insertNodeAtBeginning(6);
+krish.insertNodeAtBeginning(7);
 
 krish.insertNodeAtEnd(100);      // Inserting 100 at the end
 
@@ -256,9 +322,15 @@ krish.deleteNodeAtEnd();    // Delete a node at beginning
 
 krish.makeCircular();            // Making linkedlist to circular
 
-krish.printData(1);               // Prints all nodes one by one
+krish.getSize();				 // Printing size of linked list
 
-krish.printData();               // Prints all values one by one
+krish.getItem(3);				 // Prints the item at position 3
+
+krish.getIndex(7);				 // Prints the index of item - 7
+
+krish.printNodes();              // Prints all nodes one by one
+
+krish.printList();               // Prints linked list one by one
 
 console.log(krish);              // Prints the linkedlist class
 
