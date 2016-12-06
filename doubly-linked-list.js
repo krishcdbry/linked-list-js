@@ -148,7 +148,7 @@ DoublyLinkedlist.prototype.deleteNodeAtBeginning = function () {
 
 /**
  Deleting node at the end
- Complexity : O(n)
+ Complexity : O(1)
  */
 DoublyLinkedlist.prototype.deleteNodeAtEnd = function () {
 	if (this.size <= 0) {
@@ -162,13 +162,8 @@ DoublyLinkedlist.prototype.deleteNodeAtEnd = function () {
 	}
 
 	else {
-		var ptr = this.start;
-		var tmpNode = null;
-		for (var i = 0; i < this.size-1; i++) {    // Looping all the linked list to last but one
-			tmpNode = ptr;
-			ptr = ptr.getNextlink();
-		}
-		tmpNode.setNextlink(null);
+		this.end = this.end.getPrevlink();
+		this.end.setNextlink(null);
 		this.size--;
 	}
 };
